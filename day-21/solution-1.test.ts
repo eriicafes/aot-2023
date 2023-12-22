@@ -1,5 +1,5 @@
 import { Equal, Expect } from 'type-testing';
-import { NewGame, TicTacToe } from "./solution-1"
+import { NewGame, TicTacToe } from "./solution-1";
 
 type test_move1_actual = TicTacToe<NewGame, 'top-center'>;
 //   ^?
