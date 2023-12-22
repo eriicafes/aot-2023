@@ -18,7 +18,7 @@ type EmptyBoard = [
     ['  ', '  ', '  ']
 ];
 
-type NewGame = {
+export type NewGame = {
     board: EmptyBoard;
     state: '❌';
 };
@@ -95,32 +95,4 @@ type PlaySerializedGame<
     : never
     : { board: Deserialize<Game>, state: Player }
 
-type TicTacToe<G extends Game, P extends TicTacToePosition> = PlaySerializedGame<Serialize<G["board"]>, G["state"], P>
-
-// playground
-type Res1 = TicTacToe<NewGame, "top-center">
-
-type XLooserBoard = [
-    ['⭕', '❌', '  '],
-    ['⭕', '❌', '❌'],
-    ['❌', '⭕', '  '],
-]
-type XEndGame = {
-    board: XLooserBoard
-    state: '❌'
-}
-
-type Res2 = TicTacToe<XEndGame, "top-right"> // X wins
-
-type YLooserBoard = [
-    ['⭕', '❌', '  '],
-    ['⭕', '❌', '❌'],
-    ['❌', '⭕', '  '],
-]
-type YEndGame = {
-    board: YLooserBoard
-    state: '⭕'
-}
-
-type Res3 = TicTacToe<YEndGame, "top-right">
-type Res4 = TicTacToe<Res3, "bottom-right"> // Draw
+export type TicTacToe<G extends Game, P extends TicTacToePosition> = PlaySerializedGame<Serialize<G["board"]>, G["state"], P>
